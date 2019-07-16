@@ -1,0 +1,61 @@
+<app-modal id="modal-1">
+  <h2 class="card-title">Title</h2>
+  <div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, omnis.</p>
+    <p>Asperiores consequuntur magni molestias numquam tempora unde vel voluptatem. Odio.</p>
+  </div>
+  <div class="modal-buttons">
+    <button class="btn-danger" (click)="toggleModal('modal-1', false)">Close</button>
+  </div>
+</app-modal>
+
+<app-modal id="modal-2">
+  <h2 class="card-title">Title 2</h2>
+  <div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab.</p>
+    <p>Accusamus accusantium facilis fugiat nobis nostrum qui quisquam sunt, voluptates?</p>
+    <p>Ex illum nemo non quae sit soluta ullam vero voluptates!</p>
+  </div>
+  <div class="modal-buttons">
+    <button class="btn-warning" (click)="toggleModal('modal-2', false)">Close</button>
+  </div>
+</app-modal>
+
+<app-modal id="modal-form">
+  <h2>Forms</h2>
+  <div class="card-body">
+    <form [formGroup]="modalForm" (submit)="showFormData(modalForm, 'modal-form')">
+      <div class="custom-form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" formControlName="name">
+      </div>
+      <div class="custom-form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" formControlName="age">
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-dark" (click)="toggleModal('modal-form', true)">Cancel</button>
+        <button class="btn-success" type="submit" [disabled]="modalForm.invalid">Confirm</button>
+      </div>
+    </form>
+  </div>
+</app-modal>
+
+
+<div class="buttons-wrapper">
+  <div>
+    <button (click)="toggleModal('modal-1', false)">Modal one |
+      isOpen: {{ (getModalCondition('modal-1') | async).isOpen }}</button>
+    <button>Confirmed: {{ (getModalCondition('modal-1') | async).isConfirm}}</button>
+  </div>
+  <div>
+    <button (click)="toggleModal('modal-2', false)">Modal two |
+      isOpen: {{ (getModalCondition('modal-2') | async).isOpen }}</button>
+    <button>Confirmed: {{ (getModalCondition('modal-2') | async).isConfirm}}</button>
+  </div>
+  <div>
+    <button (click)="toggleModal('modal-form', false)">Modal with form |
+      isOpen: {{ (getModalCondition('modal-form') | async).isOpen}}</button>
+    <button>Confirmed: {{ (getModalCondition('modal-form') | async).isConfirm}}</button>
+  </div>
+</div>
