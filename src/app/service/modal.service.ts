@@ -6,8 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class ModalService {
   private modals: any[] = [];
-  private flag = false;
-  private initialState: any;
+  readonly initialState: any;
 
   constructor() {
     this.initialState = {
@@ -17,14 +16,14 @@ export class ModalService {
   }
 
   initModal(id: string) {
-    const modal = new BehaviorSubject(this.initialState);
-    this.modals.push({element: modal, id});
+    const $modal = new BehaviorSubject(this.initialState);
+    this.modals.push({$element: $modal, id, isOpen: false});
   }
 
   toggleModal(id: string, isConfirmed: boolean): void {
     const modal = this.modals.filter(x => x.id === id)[0];
-    this.flag = !this.flag;
-    modal.element.next({isOpen: this.flag, isConfirm: isConfirmed});
+    modal.isOpen = !modal.isOpen;
+    modal.$element.next({isOpen: modal.isOpen, isConfirm: isConfirmed});
   }
 
   getModalStatus(id: string) {

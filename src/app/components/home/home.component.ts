@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../service/modal.service';
 import {FormBuilder, Validators} from '@angular/forms';
 
@@ -22,8 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   getModalCondition(id) {
-    const modal = this.modalService.getModalStatus(id).element;
-    return modal;
+    return this.modalService.getModalStatus(id).$element;
   }
 
   initModalForm() {

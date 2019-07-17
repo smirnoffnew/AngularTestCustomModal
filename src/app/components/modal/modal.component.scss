@@ -19,16 +19,18 @@ $text_color: #222222;
 
   @keyframes show {
     from {
+      top: 0;
       opacity: 0;
     }
 
     to {
+      top: 50%;
       opacity: 1;
     }
   }
 
   &.open {
-    animation: show .25s;
+    animation: show .5s;
   }
 
   .modal-body {
@@ -79,19 +81,20 @@ $text_color: #222222;
     .modal-buttons {
       margin-top: 20px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       padding: 24px 0 0 0;
+      flex-wrap: wrap;
 
       button {
         padding: 11px 40px;
         font-size: 16px;
         border-radius: 5px;
-        margin-left: 30px;
         border: none;
         cursor: pointer;
         transition: .25s;
+        margin: 10px 0 10px 20px;
 
-        &.btn-dark {
+        &.modal-button-dark {
           background: $btn_dark;
           color: $white;
 
@@ -100,7 +103,7 @@ $text_color: #222222;
           }
         }
 
-        &.btn-success {
+        &.modal-button-success {
           background: $btn_success;
           color: $white;
 
@@ -109,7 +112,7 @@ $text_color: #222222;
           }
         }
 
-        &.btn-danger {
+        &.modal-button-danger {
           background: $btn_danger;
           color: $white;
 
@@ -118,7 +121,7 @@ $text_color: #222222;
           }
         }
 
-        &.btn-warning {
+        &.modal-button-warning {
           background: $btn_warning;
           color: $white;
 
