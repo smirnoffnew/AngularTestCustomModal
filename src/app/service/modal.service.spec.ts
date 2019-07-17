@@ -27,6 +27,17 @@ describe('ModalService', () => {
     const service: ModalService = TestBed.get(ModalService);
     service.initModal('some_id');
     service.toggleModal('some_id', false);
-    expect(service.getModalStatus('some_id').element).toEqual(false);
+    service.getModalStatus('some_id').$element.subscribe(data => {
+      expect(data.isConfirm).toBe(false);
+    });
+  });
+
+  it('is modal should be confirmed after close from service', () => {
+    const service: ModalService = TestBed.get(ModalService);
+    service.initModal('some_id');
+    service.toggleModal('some_id', true);
+    service.getModalStatus('some_id').$element.subscribe(data => {
+      expect(data.isConfirm).toBe(true);
+    });
   });
 });
