@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ModalService} from '../../service/modal.service';
 import {Subject} from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +13,8 @@ export class ModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
   modalStatus;
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService) {
+  }
 
   ngOnInit() {
     this.modalService.initModal(this.id);

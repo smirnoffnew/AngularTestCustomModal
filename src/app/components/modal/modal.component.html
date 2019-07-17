@@ -1,6 +1,6 @@
 <div *ngIf="(modalStatus.element | async).isOpen">
   <div class="modal-wrapper" (click)="closeModal()"></div>
-  <div class="modal">
+  <div class="modal" [ngClass]="(modalStatus.element | async).isOpen ? 'open' : ''">
     <div class="modal-body">
       <ng-content></ng-content>
     </div>

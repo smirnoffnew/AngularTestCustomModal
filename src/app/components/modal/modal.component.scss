@@ -17,6 +17,20 @@ $text_color: #222222;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
   z-index: 1000;
 
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  &.open {
+    animation: show .25s;
+  }
+
   .modal-body {
     padding: 30px;
 
@@ -126,3 +140,4 @@ $text_color: #222222;
   background: rgba(0, 0, 0, .45);
   z-index: 999;
 }
+
